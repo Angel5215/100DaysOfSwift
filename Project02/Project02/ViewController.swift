@@ -28,6 +28,9 @@ class ViewController: UIViewController {
 		countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
 		
 		askQuestion()
+		
+		//	Challenges Day 22.
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Show Score", style: .plain, target: self, action: #selector(showScore))
 	}
 	
 	func askQuestion(_ action: UIAlertAction! = nil) {
@@ -36,7 +39,7 @@ class ViewController: UIViewController {
 		
 		correctAnswer = Int.random(in: 0 ... 2)
 		
-		title = "\(countries[correctAnswer].uppercased()) - Score: \(score)"
+		title = countries[correctAnswer].uppercased()
 		
 		button1.setImage(UIImage(named: countries[0]), for: .normal)
 		button2.setImage(UIImage(named: countries[1]), for: .normal)
@@ -69,7 +72,10 @@ class ViewController: UIViewController {
 			title = "Wrong"
 			score -= 1
 			//	Challenge 3.
-			message = "That's the flag of \(countries[sender.tag].capitalized). Your score is \(score)."
+			
+			let currentCountry = countries[sender.tag] == "us" ? "the United States" : countries[sender.tag].capitalized
+			
+			message = "That's the flag of \(currentCountry). Your score is \(score)."
 		}
 		
 		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -82,17 +88,43 @@ class ViewController: UIViewController {
 		title = "Your final score is: \(score)"
 		
 		let ac = UIAlertController(title: "Game Over", message: "Your final score is \(score)", preferredStyle: .alert)
-		
-		let restart = UIAlertAction(title: "Restart", style: .default) { [unowned self] action in
-			self.score = 0
-			self.correctAnswer = 0
-			self.questionsAsked = 0
-			
-			self.askQuestion()
-		}
 
-		ac.addAction(restart)
+		ac.addAction(UIAlertAction(title: "Restart", style: .default, handler: restart))
+		ac.addAction(UIAlertAction(title: "Share", style: .default, handler: share))
+		
 		present(ac, animated: true)
+	}
+	
+	@objc func showScore() {
+		let ac = UIAlertController(title: "Score", message: "Your current score is \(score)", preferredStyle: .alert)
+		
+		let ok = UIAlertAction(title: "OK", style: .default)
+		
+		ac.addAction(ok)
+		present(ac, animated: true)
+	}
+	
+	
+	func share(action: UIAlertAction! = nil) {
+		let finalScore = "My final score in Guess the Flag was \(score)!"
+		
+		let ac = UIActivityViewController(activityItems: [finalScore], applicationActivities: [])
+		
+		ac.completionWithItemsHandler = { [unowned self] activity, success, items, error in
+			self.restart()
+		}
+		
+		popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+		
+		present(ac, animated: true)
+	}
+	
+	func restart(action: UIAlertAction! = nil) {
+		score = 0
+		correctAnswer = 0
+		questionsAsked = 0
+		
+		askQuestion()
 	}
 }
 
