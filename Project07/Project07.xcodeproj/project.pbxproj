@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0E06BE2230F2C400BDB0F8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E06BD2230F2C400BDB0F8 /* DetailViewController.swift */; };
 		FAFFEDC1222FB4650042ACDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFEDC0222FB4650042ACDE /* AppDelegate.swift */; };
 		FAFFEDC3222FB4650042ACDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFEDC2222FB4650042ACDE /* ViewController.swift */; };
 		FAFFEDC6222FB4650042ACDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFFEDC4222FB4650042ACDE /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA0E06BD2230F2C400BDB0F8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FAFFEDBD222FB4650042ACDE /* Project07.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project07.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFFEDC0222FB4650042ACDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAFFEDC2222FB4650042ACDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				FAFFEDC0222FB4650042ACDE /* AppDelegate.swift */,
+				FA0E06BD2230F2C400BDB0F8 /* DetailViewController.swift */,
 				FAFFEDC2222FB4650042ACDE /* ViewController.swift */,
 				FAFFEDD2222FB73D0042ACDE /* Petition.swift */,
 				FAFFEDD4222FB7910042ACDE /* Petitions.swift */,
@@ -143,6 +146,7 @@
 			files = (
 				FAFFEDC3222FB4650042ACDE /* ViewController.swift in Sources */,
 				FAFFEDD5222FB7910042ACDE /* Petitions.swift in Sources */,
+				FA0E06BE2230F2C400BDB0F8 /* DetailViewController.swift in Sources */,
 				FAFFEDC1222FB4650042ACDE /* AppDelegate.swift in Sources */,
 				FAFFEDD3222FB73D0042ACDE /* Petition.swift in Sources */,
 			);
