@@ -78,6 +78,12 @@ class ViewController: UIViewController {
         clear.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
         
         let buttonsView = UIView()
+        
+        //  Challenge 1
+        buttonsView.layer.borderWidth = 1
+        buttonsView.layer.cornerRadius = 10
+        buttonsView.layer.borderColor = UIColor.lightGray.cgColor
+        
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonsView)
         
@@ -205,15 +211,39 @@ class ViewController: UIViewController {
             
             score += 1
             
-            if score % 7 == 0 {
+            //  Challenge 3
+            if isRoundOver() {
                 let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
                 present(ac, animated: true)
             }
+        } else {
+            //  Challenge 2
+            let ac = UIAlertController(title: "Wrong", message: "Incorrect guess. Try again", preferredStyle: .alert)
+            
+            let ok = UIAlertAction(title: "OK", style: .default) { [weak self] action in
+                self?.currentAnswer.text = ""
+                self?.score -= 3
+                
+                self?.scoreLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
+                
+                UIView.animate(withDuration: 1) {
+                    self?.scoreLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }
+                
+                self?.clearTapped()
+            }
+            ac.addAction(ok)
+            
+            present(ac, animated: true)
         }
     }
     
-    @objc func clearTapped(_ sender: UIButton) {
+    func isRoundOver() -> Bool {
+        return letterButtons.filter { !$0.isHidden }.isEmpty
+    }
+    
+    @objc func clearTapped(_ sender: UIButton! = nil) {
         currentAnswer.text = ""
         
         for btn in activatedButtons {
