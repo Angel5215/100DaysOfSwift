@@ -14,25 +14,34 @@ class ViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
+        
+        
+        performSelector(inBackground: #selector(loadImages), with: nil)
 		
-		let fm = FileManager.default
-		let path = Bundle.main.resourcePath!
-		let items = try! fm.contentsOfDirectory(atPath: path)
-		
-		for item in items {
-			if item.hasPrefix("nssl") {
-				pictures.append(item)
-				print(pictures)
-			}
-		}
-		
-		//	Challenge 2. Names in sorted order.
-		pictures.sort()
 		
 		//	Title and design guidelines.
 		title = "Storm Viewer"
 		navigationController?.navigationBar.prefersLargeTitles = true
 	}
+    
+    @objc func loadImages() {
+        let fm = FileManager.default
+        let path = Bundle.main.resourcePath!
+        let items = try! fm.contentsOfDirectory(atPath: path)
+        
+        for item in items {
+            if item.hasPrefix("nssl") {
+                pictures.append(item)
+                print(pictures)
+            }
+        }
+        
+        //    Challenge 2. Names in sorted order.
+        pictures.sort()
+        
+        tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+    }
 	
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

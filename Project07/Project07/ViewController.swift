@@ -65,22 +65,25 @@ class ViewController: UITableViewController {
             guard let textField = ac.textFields?[0] else { return }
             guard let text = textField.text?.lowercased() else { return }
             
-            if text.isNotEmpty {
-                self.filteredPetitions = self.petitions.filter { petition in
-                    
-                    print("""
-                    title: \(petition.title)
-                    body: \(petition.body)
-                    text: \(text)
-                    """)
-                    
-                    return petition.title.lowercased().contains(text) || petition.body.lowercased().contains(text)
-                }
-            } else {
-                self.filteredPetitions = self.petitions
-            }
             
-            self.tableView.reloadData()
+            DispatchQueue.global(qos: .userInteractive).async {
+                if text.isNotEmpty {
+                    self.filteredPetitions = self.petitions.filter { petition in
+                        
+                        print("""
+                            title: \(petition.title)
+                            body: \(petition.body)
+                            text: \(text)
+                            """)
+                        
+                        return petition.title.lowercased().contains(text) || petition.body.lowercased().contains(text)
+                    }
+                } else {
+                    self.filteredPetitions = self.petitions
+                }
+                
+                self.tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+            }
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
