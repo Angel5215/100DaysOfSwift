@@ -12,6 +12,17 @@
 		FA8541A62239D2DF00228618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8541A42239D2DF00228618 /* Main.storyboard */; };
 		FA8541A82239D2E000228618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8541A72239D2E000228618 /* Assets.xcassets */; };
 		FA8541AB2239D2E000228618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8541A92239D2E000228618 /* LaunchScreen.storyboard */; };
+		FA8541B42239D49700228618 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA8541B32239D49700228618 /* words.txt */; };
+		FA8541BF2239D71400228618 /* man-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA8541B52239D71400228618 /* man-3.txt */; };
+		FA8541C02239D71400228618 /* man-6.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA8541B62239D71400228618 /* man-6.txt */; };
+		FA8541C12239D71400228618 /* man-4.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA8541B72239D71400228618 /* man-4.txt */; };
+		FA8541C22239D71400228618 /* man-0.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA8541B82239D71400228618 /* man-0.txt */; };
+		FA8541C32239D71400228618 /* man-5.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA8541B92239D71400228618 /* man-5.txt */; };
+		FA8541C42239D71400228618 /* man-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA8541BA2239D71400228618 /* man-1.txt */; };
+		FA8541C52239D71400228618 /* man-7.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA8541BB2239D71400228618 /* man-7.txt */; };
+		FA8541C62239D71400228618 /* man-9.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA8541BC2239D71400228618 /* man-9.txt */; };
+		FA8541C72239D71400228618 /* man-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA8541BD2239D71400228618 /* man-2.txt */; };
+		FA8541C82239D71400228618 /* man-8.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA8541BE2239D71400228618 /* man-8.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +33,17 @@
 		FA8541A72239D2E000228618 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8541AA2239D2E000228618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA8541AC2239D2E000228618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA8541B32239D49700228618 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
+		FA8541B52239D71400228618 /* man-3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "man-3.txt"; sourceTree = "<group>"; };
+		FA8541B62239D71400228618 /* man-6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "man-6.txt"; sourceTree = "<group>"; };
+		FA8541B72239D71400228618 /* man-4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "man-4.txt"; sourceTree = "<group>"; };
+		FA8541B82239D71400228618 /* man-0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "man-0.txt"; sourceTree = "<group>"; };
+		FA8541B92239D71400228618 /* man-5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "man-5.txt"; sourceTree = "<group>"; };
+		FA8541BA2239D71400228618 /* man-1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "man-1.txt"; sourceTree = "<group>"; };
+		FA8541BB2239D71400228618 /* man-7.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "man-7.txt"; sourceTree = "<group>"; };
+		FA8541BC2239D71400228618 /* man-9.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "man-9.txt"; sourceTree = "<group>"; };
+		FA8541BD2239D71400228618 /* man-2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "man-2.txt"; sourceTree = "<group>"; };
+		FA8541BE2239D71400228618 /* man-8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "man-8.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +82,27 @@
 				FA8541A72239D2E000228618 /* Assets.xcassets */,
 				FA8541A92239D2E000228618 /* LaunchScreen.storyboard */,
 				FA8541AC2239D2E000228618 /* Info.plist */,
+				FA8541B22239D48600228618 /* Files */,
 			);
 			path = ConsolidationApp03;
+			sourceTree = "<group>";
+		};
+		FA8541B22239D48600228618 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA8541B82239D71400228618 /* man-0.txt */,
+				FA8541BA2239D71400228618 /* man-1.txt */,
+				FA8541BD2239D71400228618 /* man-2.txt */,
+				FA8541B52239D71400228618 /* man-3.txt */,
+				FA8541B72239D71400228618 /* man-4.txt */,
+				FA8541B92239D71400228618 /* man-5.txt */,
+				FA8541B62239D71400228618 /* man-6.txt */,
+				FA8541BB2239D71400228618 /* man-7.txt */,
+				FA8541BE2239D71400228618 /* man-8.txt */,
+				FA8541BC2239D71400228618 /* man-9.txt */,
+				FA8541B32239D49700228618 /* words.txt */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,7 +163,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA8541C32239D71400228618 /* man-5.txt in Resources */,
 				FA8541AB2239D2E000228618 /* LaunchScreen.storyboard in Resources */,
+				FA8541C22239D71400228618 /* man-0.txt in Resources */,
+				FA8541C82239D71400228618 /* man-8.txt in Resources */,
+				FA8541C72239D71400228618 /* man-2.txt in Resources */,
+				FA8541C12239D71400228618 /* man-4.txt in Resources */,
+				FA8541B42239D49700228618 /* words.txt in Resources */,
+				FA8541C52239D71400228618 /* man-7.txt in Resources */,
+				FA8541C62239D71400228618 /* man-9.txt in Resources */,
+				FA8541BF2239D71400228618 /* man-3.txt in Resources */,
+				FA8541C42239D71400228618 /* man-1.txt in Resources */,
+				FA8541C02239D71400228618 /* man-6.txt in Resources */,
 				FA8541A82239D2E000228618 /* Assets.xcassets in Resources */,
 				FA8541A62239D2DF00228618 /* Main.storyboard in Resources */,
 			);
