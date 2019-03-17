@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA187447223DC6FA006E990E /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA187446223DC6FA006E990E /* PictureCell.swift */; };
 		FA71DC65221BABBB005FF5CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71DC64221BABBB005FF5CE /* AppDelegate.swift */; };
 		FA71DC67221BABBB005FF5CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71DC66221BABBB005FF5CE /* ViewController.swift */; };
 		FA71DC6A221BABBB005FF5CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA71DC68221BABBB005FF5CE /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA187446223DC6FA006E990E /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 		FA71DC61221BABBB005FF5CE /* Project01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA71DC64221BABBB005FF5CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA71DC66221BABBB005FF5CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				FA71DC64221BABBB005FF5CE /* AppDelegate.swift */,
 				FA71DC66221BABBB005FF5CE /* ViewController.swift */,
+				FA187446223DC6FA006E990E /* PictureCell.swift */,
 				FA71DC8B221BAE59005FF5CE /* DetailViewController.swift */,
 				FA71DC68221BABBB005FF5CE /* Main.storyboard */,
 				FA71DC6B221BABBC005FF5CE /* Assets.xcassets */,
@@ -186,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA187447223DC6FA006E990E /* PictureCell.swift in Sources */,
 				FA71DC8C221BAE59005FF5CE /* DetailViewController.swift in Sources */,
 				FA71DC67221BABBB005FF5CE /* ViewController.swift in Sources */,
 				FA71DC65221BABBB005FF5CE /* AppDelegate.swift in Sources */,
