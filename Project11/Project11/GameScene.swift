@@ -29,12 +29,41 @@ class GameScene: SKScene {
         }
     }
     
+    var remainingLabel: SKLabelNode!
+    
+    var remainingBalls = 5 {
+        didSet {
+            remainingLabel.text = "Balls: \(remainingBalls)"
+        }
+    }
+    
+    private enum BallColor: String, CaseIterable {
+        case red = "ballRed"
+        case blue = "ballBlue"
+        case grey = "ballGrey"
+        case purple = "ballPurple"
+        case yellow = "ballYellow"
+        case green = "ballGreen"
+        case cyan = "ballCyan"
+        
+        static let AllColors = BallColor.allCases
+        
+        static func getRandom() -> String {
+            return AllColors.randomElement()?.rawValue ?? "ballRed"
+        }
+    }
+
+    
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background.jpg")
         background.position = CGPoint(x: 512, y: 384)
         background.blendMode = .replace
         background.zPosition = -1
         addChild(background)
+        
+        let limitLine = SKSpriteNode(color: UIColor(white: 1, alpha: 0.2), size: CGSize(width: size.width, height: 1))
+        limitLine.position = CGPoint(x: 512, y: 599.5)
+        addChild(limitLine)
         
         for i in 0 ..< 5 {
             makeBouncer(at: CGPoint(x: 256 * i, y: 0))
@@ -60,6 +89,12 @@ class GameScene: SKScene {
         editLabel.text = "Edit"
         editLabel.position = CGPoint(x: 80, y: 700)
         addChild(editLabel)
+        
+        remainingLabel = SKLabelNode(fontNamed: "Chalkduster")
+        remainingLabel.text = "Balls: \(remainingBalls)"
+        remainingLabel.horizontalAlignmentMode = .center
+        remainingLabel.position = CGPoint(x: 512, y: 700)
+        addChild(remainingLabel)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -77,12 +112,13 @@ class GameScene: SKScene {
                     let box = SKSpriteNode(color: UIColor(red: CGFloat.random(in: 0...1), green: CGFloat.random(in: 0...1), blue: CGFloat.random(in: 0...1), alpha: 1), size: size)
                     box.zRotation = CGFloat.random(in: 0...3)
                     box.position = location
+                    box.name = "box"
                     
                     box.physicsBody = SKPhysicsBody(rectangleOf: box.size)
                     box.physicsBody?.isDynamic = false
                     addChild(box)
-                } else {
-                    let ball = SKSpriteNode(imageNamed: "ballRed")
+                } else if location.y >= 600 && remainingBalls > 0 {
+                    let ball = SKSpriteNode(imageNamed: BallColor.getRandom())
                     ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2)
                     ball.physicsBody?.restitution = 0.4
                     ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
@@ -90,6 +126,8 @@ class GameScene: SKScene {
                     ball.name = "ball"
                     
                     addChild(ball)
+                    
+                    remainingBalls -= 1
                 }
             }
         }
@@ -135,15 +173,56 @@ class GameScene: SKScene {
     func collisionBetween(ball: SKNode, object: SKNode) {
         if object.name == "good" {
             destroy(ball: ball)
-            score += 1
-        } else  if object.name == "bad" {
+            score += 300
+            remainingBalls += 1
+            
+            let color = SKAction.colorize(with: .green, colorBlendFactor: 1, duration: 0.2)
+            let scale = SKAction.scale(to: 1.3, duration: 0.2)
+            let returnColor = SKAction.colorize(with: .white, colorBlendFactor: 1, duration: 0.2)
+            let returnScale = SKAction.scale(to: 1, duration: 0.2)
+            let group = SKAction.group([color, scale])
+            let returnGroup = SKAction.group([returnColor, returnScale])
+            let sequence = SKAction.sequence([group, returnGroup])
+            remainingLabel.run(sequence)
+            
+            
+        } else if object.name == "bad" {
             destroy(ball: ball)
-            score -= 1
+            score -= 1500
+        }
+        
+        if object.name == "box" {
+            let box = object as! SKSpriteNode
+            let points = Int(box.size.width) * Int(box.size.height) / 3
+            score += points
+            
+            remove(box: object)
         }
     }
     
     func destroy(ball: SKNode) {
+        
+        if let fireParticles = SKEmitterNode(fileNamed: "FireParticles") {
+            fireParticles.position = ball.position
+            addChild(fireParticles)
+            
+            //  Removes particles after three seconds
+            let removeAfterDead = SKAction.sequence([SKAction.wait(forDuration: 3), SKAction.removeFromParent()])
+            fireParticles.run(removeAfterDead)
+        }
+        
         ball.removeFromParent()
+    }
+    
+    func remove(box: SKNode) {
+        let scale = SKAction.scale(to: 0.3, duration: 0.2)
+        let fadeOut = SKAction.fadeOut(withDuration: 0.2)
+        let remove = SKAction.removeFromParent()
+        
+        let group = SKAction.group([scale, fadeOut])
+        let sequence = SKAction.sequence([group, remove])
+        
+        box.run(sequence)
     }
 }
 
