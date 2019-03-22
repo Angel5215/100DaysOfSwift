@@ -21,6 +21,7 @@ class ViewController: UIViewController {
 	var score = 0
 	var correctAnswer = 0
 	var questionsAsked = 0
+    
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -120,6 +121,17 @@ class ViewController: UIViewController {
 	}
 	
 	func restart(action: UIAlertAction! = nil) {
+        
+        let defaults = UserDefaults.standard
+        let maxScore = defaults.integer(forKey: "maxScore")
+        if maxScore >= 0, score > maxScore {
+            let ac = UIAlertController(title: "New highest score!", message: "You beat your previous score of \(maxScore) points with \(score) points.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+            
+            defaults.set(score, forKey: "maxScore")
+        }
+        
 		score = 0
 		correctAnswer = 0
 		questionsAsked = 0
