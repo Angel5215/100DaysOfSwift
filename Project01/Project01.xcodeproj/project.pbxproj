@@ -24,6 +24,7 @@
 		FA71DC89221BAC29005FF5CE /* nssl0033.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA71DC7F221BAC29005FF5CE /* nssl0033.jpg */; };
 		FA71DC8A221BAC29005FF5CE /* nssl0034.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA71DC80221BAC29005FF5CE /* nssl0034.jpg */; };
 		FA71DC8C221BAE59005FF5CE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71DC8B221BAE59005FF5CE /* DetailViewController.swift */; };
+		FAC3007A2244497F00F8AA7D /* Photograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC300792244497F00F8AA7D /* Photograph.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		FA71DC7F221BAC29005FF5CE /* nssl0033.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0033.jpg; sourceTree = "<group>"; };
 		FA71DC80221BAC29005FF5CE /* nssl0034.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0034.jpg; sourceTree = "<group>"; };
 		FA71DC8B221BAE59005FF5CE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FAC300792244497F00F8AA7D /* Photograph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photograph.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			children = (
 				FA71DC64221BABBB005FF5CE /* AppDelegate.swift */,
 				FA71DC66221BABBB005FF5CE /* ViewController.swift */,
+				FAC300792244497F00F8AA7D /* Photograph.swift */,
 				FA187446223DC6FA006E990E /* PictureCell.swift */,
 				FA71DC8B221BAE59005FF5CE /* DetailViewController.swift */,
 				FA71DC68221BABBB005FF5CE /* Main.storyboard */,
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA187447223DC6FA006E990E /* PictureCell.swift in Sources */,
+				FAC3007A2244497F00F8AA7D /* Photograph.swift in Sources */,
 				FA71DC8C221BAE59005FF5CE /* DetailViewController.swift in Sources */,
 				FA71DC67221BABBB005FF5CE /* ViewController.swift in Sources */,
 				FA71DC65221BABBB005FF5CE /* AppDelegate.swift in Sources */,

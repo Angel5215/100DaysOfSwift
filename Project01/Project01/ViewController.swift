@@ -10,14 +10,14 @@ import UIKit
 
 class ViewController: UICollectionViewController {
 	
-	var pictures = [String]()
+	var pictures = [Photograph]()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
         
         
-        performSelector(inBackground: #selector(loadImages), with: nil)
+        performSelector(inBackground: #selector(loadFromDefaults), with: nil)
 		
 		
 		//	Title and design guidelines.
@@ -32,13 +32,20 @@ class ViewController: UICollectionViewController {
         
         for item in items {
             if item.hasPrefix("nssl") {
-                pictures.append(item)
+                let photograph = Photograph(name: item)
+                pictures.append(photograph)
                 print(pictures)
             }
         }
         
         //    Challenge 2. Names in sorted order.
-        pictures.sort()
+        pictures.sort { $0.name < $1.name }
+        
+        /*for i in 0 ..< 1000 {
+            let photo = pictures[i % 10]
+            let newPhoto = Photograph(from: photo)
+            pictures.append(newPhoto)
+        }*/
         
         collectionView.performSelector(onMainThread: #selector(UICollectionView.reloadData), with: nil, waitUntilDone: false)
     }
@@ -53,20 +60,55 @@ class ViewController: UICollectionViewController {
         
         let current = pictures[indexPath.item]
         
-        cell.textLabel?.text = current
-        cell.picture.image = UIImage(named: current)
+        cell.textLabel?.text = current.name
+        cell.picture.image = UIImage(named: current.name)
+        cell.viewsLabel.text = "Views: \(current.viewsCount)"
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vc.selectedImage = pictures[indexPath.row]
+            
+            let selected = pictures[indexPath.item]
+            vc.selectedImage = selected.name
+            
+            selected.viewsCount += 1
+            collectionView.reloadItems(at: [indexPath])
+            save()
             
             let pictureNumber = indexPath.row + 1
             vc.pictureTitle = "Picture \(pictureNumber) of \(pictures.count)"
             
             navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        
+        if let savedData = try? jsonEncoder.encode(pictures) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "pictures")
+        } else {
+            print("Failed to save pictures")
+        }
+    }
+    
+    @objc func loadFromDefaults() {
+        let defaults = UserDefaults.standard
+        
+        if let data = defaults.object(forKey: "pictures") as? Data {
+            let jsonDecoder = JSONDecoder()
+            do {
+                pictures = try jsonDecoder.decode([Photograph].self, from: data)
+                
+                collectionView.performSelector(onMainThread: #selector(UICollectionView.reloadData), with: nil, waitUntilDone: false)
+            } catch {
+                print("Failed to load images")
+            }
+        } else {
+            loadImages()
         }
     }
 

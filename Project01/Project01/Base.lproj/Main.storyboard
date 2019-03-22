@@ -33,12 +33,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3U2-7c-7ib">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKS-Te-ogb">
-                                            <rect key="frame" x="0.0" y="82" width="100" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKS-Te-ogb">
+                                            <rect key="frame" x="0.0" y="102" width="120" height="18"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.1286922089041096" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                            <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <size key="shadowOffset" width="1" height="1"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Views: 9999" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUk-H9-Vv9">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="16.5"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.12869220889999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                             <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -48,6 +57,9 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="3U2-7c-7ib" firstAttribute="leading" secondItem="15E-lI-mcE" secondAttribute="leading" id="6On-Dg-uuf"/>
+                                    <constraint firstItem="mUk-H9-Vv9" firstAttribute="leading" secondItem="15E-lI-mcE" secondAttribute="leading" id="6nJ-Nb-jW9"/>
+                                    <constraint firstItem="mUk-H9-Vv9" firstAttribute="top" secondItem="15E-lI-mcE" secondAttribute="top" id="GXt-lf-Tp5"/>
+                                    <constraint firstItem="mUk-H9-Vv9" firstAttribute="centerX" secondItem="3U2-7c-7ib" secondAttribute="centerX" id="VBM-ah-p1r"/>
                                     <constraint firstItem="3U2-7c-7ib" firstAttribute="top" secondItem="15E-lI-mcE" secondAttribute="top" id="Zzw-AB-07Q"/>
                                     <constraint firstAttribute="bottom" secondItem="EKS-Te-ogb" secondAttribute="bottom" id="aXg-bE-lM6"/>
                                     <constraint firstItem="EKS-Te-ogb" firstAttribute="centerX" secondItem="3U2-7c-7ib" secondAttribute="centerX" id="cmP-3j-nYu"/>
@@ -55,10 +67,12 @@
                                     <constraint firstAttribute="bottom" secondItem="3U2-7c-7ib" secondAttribute="bottom" id="laY-OB-aMe"/>
                                     <constraint firstAttribute="trailing" secondItem="3U2-7c-7ib" secondAttribute="trailing" id="rEy-X9-zVC"/>
                                     <constraint firstAttribute="trailing" secondItem="EKS-Te-ogb" secondAttribute="trailing" id="sPT-FW-4g7"/>
+                                    <constraint firstAttribute="trailing" secondItem="mUk-H9-Vv9" secondAttribute="trailing" id="sjn-WI-9Qd"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="picture" destination="3U2-7c-7ib" id="hSe-tL-fXC"/>
                                     <outlet property="textLabel" destination="EKS-Te-ogb" id="koo-Bt-Fkz"/>
+                                    <outlet property="viewsLabel" destination="mUk-H9-Vv9" id="Ari-Dy-W9u"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
