@@ -29,14 +29,40 @@ class ViewController: UITableViewController {
             allWords = ["silkworm"]
         }
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(startGame))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(restart))
         
+        let defaults = UserDefaults.standard
+        let currentWord = defaults.value(forKey: "currentWord") as? String
+        let initialList = defaults.value(forKey: "usedWords") as? [String]
+        
+        startGame(with: currentWord, initialList: initialList)
+    }
+    
+    @objc func restart() {
         startGame()
     }
     
-    @objc func startGame() {
-        title = allWords.randomElement()
-        usedWords.removeAll(keepingCapacity: true)
+    func startGame(with initialWord: String? = nil, initialList: [String]? = nil) {
+        
+        if let word = initialWord {
+            
+            title = word
+            
+            if let initialList = initialList {
+                usedWords = initialList
+            }
+            
+        } else {
+            guard let word = allWords.randomElement() else { fatalError() }
+            title = word
+            
+            let defaults = UserDefaults.standard
+            defaults.set(word, forKey: "currentWord")
+            defaults.set([String](), forKey: "usedWords")
+            
+            usedWords.removeAll(keepingCapacity: true)
+        }
+
         tableView.reloadData()
     }
     
@@ -73,6 +99,9 @@ class ViewController: UITableViewController {
                     
                     let indexPath = IndexPath(item: 0, section: 0)
                     tableView.insertRows(at: [indexPath], with: .automatic)
+                    
+                    let defaults = UserDefaults.standard
+                    defaults.set(usedWords, forKey: "usedWords")
                 } else {
                     showErrorMessage(title: "Word not recognised", message: "You can't just make them up, you know!")
                 }
