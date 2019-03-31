@@ -41,6 +41,12 @@ class ViewController: UIViewController {
 		correctAnswer = Int.random(in: 0 ... 2)
 		
 		title = countries[correctAnswer].uppercased()
+        
+        UIView.animate(withDuration: 0.8) {
+            self.button1.transform = .identity
+            self.button2.transform = .identity
+            self.button3.transform = .identity
+        }
 		
 		button1.setImage(UIImage(named: countries[0]), for: .normal)
 		button2.setImage(UIImage(named: countries[1]), for: .normal)
@@ -64,7 +70,7 @@ class ViewController: UIViewController {
 	@IBAction func buttonTapped(_ sender: UIButton) {
 		var title: String
 		var message: String
-		
+        
 		if sender.tag == correctAnswer {
 			title = "Correct"
 			score += 1
@@ -78,10 +84,14 @@ class ViewController: UIViewController {
 			
 			message = "That's the flag of \(currentCountry). Your score is \(score)."
 		}
-		
-		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: questionsAsked < 10 ? askQuestion : showFinalAlert))
-		present(ac, animated: true)
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: [], animations: {
+            sender.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }) { [unowned self] finished in
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: self.questionsAsked < 10 ? self.askQuestion : self.showFinalAlert))
+            self.present(ac, animated: true)
+        }
 	}
 	
 	func showFinalAlert(action: UIAlertAction! = nil) {
