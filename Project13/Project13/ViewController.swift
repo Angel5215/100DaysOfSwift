@@ -148,14 +148,22 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.editedImage] as? UIImage else { return }
         
-        dismiss(animated: true)
-        
-        currentImage = image
-        
-        let beginImage = CIImage(image: currentImage)
-        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-        
-        applyProcessing()
+        dismiss(animated: true) { [unowned self] in
+            
+            self.imageView.alpha = 0
+            
+            UIView.animate(withDuration: 2, delay: 0, options: [.transitionCurlUp], animations: {
+                
+                self.currentImage = image
+                
+                let beginImage = CIImage(image: self.currentImage)
+                self.currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+                
+                self.applyProcessing()
+                
+                self.imageView.alpha = 1
+            })
+        }
     }
 }
 
