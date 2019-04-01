@@ -1,0 +1,144 @@
+[
+    {
+        "name": "Argentina",
+        "fullName": "Argentine Republic",
+        "motto": "En unión y libertad",
+        "anthem": "Himno Nacional Argentino",
+        "capitalCity": "Buenos Aires",
+        "languages": [
+            "Spanish",
+            "Welsh",
+            "Guaraní",
+            "Qom",
+            "Wichí"
+        ],
+        "demonyms": [
+            "Argentine",
+            "Argentinian",
+            "Argentinean"
+        ],
+        "currency": "Peso ($) (ARS)",
+        "timezone": "UTC-3",
+        "drivingSide": "right",
+        "size": 2780400,
+        "population": 43847430,
+        "flagImageStringURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/500px-Flag_of_Argentina.svg.png"
+    },
+    {
+        "name": "Angola",
+        "fullName": "Republic of Angola",
+        "motto": "Virtus Unita Fortior",
+        "anthem": "Angola Avante",
+        "capitalCity": "Luanda",
+        "languages": [
+            "Portuguese",
+            "Kikongo",
+            "Kimbundu",
+            "Umbundu"
+        ],
+        "demonyms": [
+            "Angolan"
+        ],
+        "currency": "Kwanza (AOA)",
+        "timezone": "UTC+1",
+        "drivingSide": "right",
+        "size": 1246700,
+        "population": 25789024,
+        "flagImageStringURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Flag_of_Angola.svg/500px-Flag_of_Angola.svg.png"
+    },
+    {
+        "name": "Australia",
+        "fullName": "Commonwealth of Australia",
+        "anthem": "Advance Australia Fair",
+        "capitalCity": "Canberra",
+        "languages": [
+            "English"
+        ],
+        "demonyms": [
+            "Australian",
+            "Aussie (colloquial)"
+        ],
+        "currency": "Australian dollar (AUD)",
+        "timezone": "UTC+8",
+        "drivingSide": "left",
+        "size": 7692024,
+        "population": 25308300,
+        "flagImageStringURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/500px-Flag_of_Australia_%28converted%29.svg.png"
+    },
+    {
+        "name": "Austria",
+        "fullName": "Republic of Austria",
+        "anthem": "Land der Berge, Land am Strome",
+        "capitalCity": "Vienna",
+        "languages": [
+            "Austrian German",
+            "Hungarian",
+            "Slovene",
+            "Burgenland Croatian"
+        ],
+        "demonyms": [
+            "Austrian"
+        ],
+        "currency": "Euro (€) (EUR)",
+        "timezone": "UTC+1, UTC+2",
+        "drivingSide": "right",
+        "size": 83879,
+        "population": 8857960,
+        "flagImageStringURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/500px-Flag_of_Austria.svg.png"
+    },
+    {
+        "name": "Japan",
+        "fullName": "Japan",
+        "anthem": "Kimigayo '君が代'",
+        "capitalCity": "Tokyo",
+        "languages": [
+            "Japanese"
+        ],
+        "demonyms": [
+            "Japanese"
+        ],
+        "currency": "Yen (¥) / En 円 (JPY)",
+        "timezone": "UTC+9",
+        "drivingSide": "left",
+        "size": 377973,
+        "population": 126440000,
+        "flagImageStringURL": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/640px-Flag_of_Japan.svg.png"
+    },
+    {
+        "name": "Mexico",
+        "fullName": "United Mexican States",
+        "anthem": "Himno Nacional Mexicano",
+        "capitalCity": "Mexico City",
+        "languages": [
+            "Spanish"
+        ],
+        "demonyms": [
+            "Mexican"
+        ],
+        "currency": "Peso (MXN)",
+        "timezone": "UTC-8 to UTC-5",
+        "drivingSide": "right",
+        "size": 1972550,
+        "population": 123675325,
+        "flagImageStringURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/640px-Flag_of_Mexico.svg.png"
+    },
+    {
+        "name": "Russia",
+        "fullName": "Russian Federation",
+        "anthem": "Государственный гимн Российской Федерации",
+        "capitalCity": "Moscow",
+        "languages": [
+            "Russian"
+        ],
+        "demonyms": [
+            "Russian"
+        ],
+        "currency": "Russian ruble (₽) (RUB)",
+        "timezone": "UTC+2 to UTC+12",
+        "drivingSide": "right",
+        "size": 17125191,
+        "population": 146793744,
+        "flagImageStringURL": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/1280px-Flag_of_Russia.svg.png"
+    }
+]
+ 
