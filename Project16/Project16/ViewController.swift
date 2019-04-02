@@ -28,6 +28,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotation(rome)
         mapView.addAnnotation(washington)*/
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(changeMap))
+        
         mapView.addAnnotations([london, oslo, paris, rome, washington])
     }
     
@@ -62,6 +64,24 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        present(ac, animated: true)
+    }
+    
+    @objc func changeMap() {
+        let ac = UIAlertController(title: "Edit map type", message: "Select an option", preferredStyle: .actionSheet)
+        
+        let types: KeyValuePairs = ["Hybrid": MKMapType.hybrid, "Hybrid flyover": .hybridFlyover,
+                     "Muted standard": .mutedStandard, "Satellite": .satellite,
+                     "Satellite flyover": .satelliteFlyover, "Standard": .standard]
+        
+        for (key, type) in types {
+            ac.addAction(UIAlertAction(title: key, style: .default) { [weak self] action in
+                self?.mapView.mapType = type
+            })
+        }
+        
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         present(ac, animated: true)
     }
