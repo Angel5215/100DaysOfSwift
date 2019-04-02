@@ -36,17 +36,20 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         let identifier = "Capital"
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
         
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView?.canShowCallout = true
+            
             
             let btn = UIButton(type: .detailDisclosure)
             annotationView?.rightCalloutAccessoryView = btn
         } else {
             annotationView?.annotation = annotation
         }
+        
+        annotationView?.pinTintColor = .purple
         
         return annotationView
     }
