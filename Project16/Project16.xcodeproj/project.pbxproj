@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA33FE1C22542945009C7A18 /* WikipediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33FE1B22542945009C7A18 /* WikipediaViewController.swift */; };
 		FAC6D8222252DD5F00B9A48D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6D8212252DD5F00B9A48D /* AppDelegate.swift */; };
 		FAC6D8242252DD5F00B9A48D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6D8232252DD5F00B9A48D /* ViewController.swift */; };
 		FAC6D8272252DD5F00B9A48D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC6D8252252DD5F00B9A48D /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA33FE1B22542945009C7A18 /* WikipediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaViewController.swift; sourceTree = "<group>"; };
 		FAC6D81E2252DD5F00B9A48D /* Project16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project16.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6D8212252DD5F00B9A48D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC6D8232252DD5F00B9A48D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				FAC6D8212252DD5F00B9A48D /* AppDelegate.swift */,
 				FAC6D8232252DD5F00B9A48D /* ViewController.swift */,
+				FA33FE1B22542945009C7A18 /* WikipediaViewController.swift */,
 				FAC6D8332252DD9C00B9A48D /* Capital.swift */,
 				FAC6D8252252DD5F00B9A48D /* Main.storyboard */,
 				FAC6D8282252DD6000B9A48D /* Assets.xcassets */,
@@ -140,6 +143,7 @@
 			files = (
 				FAC6D8242252DD5F00B9A48D /* ViewController.swift in Sources */,
 				FAC6D8222252DD5F00B9A48D /* AppDelegate.swift in Sources */,
+				FA33FE1C22542945009C7A18 /* WikipediaViewController.swift in Sources */,
 				FAC6D8342252DD9C00B9A48D /* Capital.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

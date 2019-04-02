@@ -43,6 +43,21 @@
             </objects>
             <point key="canvasLocation" x="912" y="138"/>
         </scene>
+        <!--Wikipedia View Controller-->
+        <scene sceneID="yqc-7o-cig">
+            <objects>
+                <viewController storyboardIdentifier="WikipediaViewController" id="IHZ-Ra-d3H" customClass="WikipediaViewController" customModule="Project16" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FI2-gb-Idr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="sbf-aA-b1G"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oFZ-Bx-1Jy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1778" y="138"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ec8-1z-ONJ">
             <objects>

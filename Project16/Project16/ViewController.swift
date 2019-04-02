@@ -21,6 +21,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let paris = Capital(title: "Paris", coordinate: CLLocationCoordinate2D(latitude: 48.8567, longitude: 2.3508), info: "Often called the City of Light.")
         let rome = Capital(title: "Rome", coordinate: CLLocationCoordinate2D(latitude: 41.9, longitude: 12.5), info: "Has a whole country inside it.")
         let washington = Capital(title: "Washington DC", coordinate: CLLocationCoordinate2D(latitude: 38.895111, longitude: -77.036667), info: "Named after George himself.")
+        let mexicoCity = Capital(title: "Mexico City", coordinate: CLLocationCoordinate2D(latitude: 19.390519, longitude: -99.4238064), info: "Mexico City has the most museums in the world, with more than 160, almost all of which are free on Sundays!")
         
         /*mapView.addAnnotation(london)
         mapView.addAnnotation(oslo)
@@ -30,7 +31,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(changeMap))
         
-        mapView.addAnnotations([london, oslo, paris, rome, washington])
+        mapView.addAnnotations([london, oslo, paris, rome, washington, mexicoCity])
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -60,12 +61,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
         guard let capital = view.annotation as? Capital else { return }
         
         let placeName = capital.title
-        let placeInfo = capital.info
+        //let placeInfo = capital.info
         
-        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
+        if let vc = navigationController?.storyboard?.instantiateViewController(withIdentifier: "WikipediaViewController") as? WikipediaViewController {
+            vc.city = placeName
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        /* let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
-        
-        present(ac, animated: true)
+        present(ac, animated: true)*/
     }
     
     @objc func changeMap() {
