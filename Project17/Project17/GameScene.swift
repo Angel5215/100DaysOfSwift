@@ -89,6 +89,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if location.y > 668 {
             location.y = 668
         }
+        
+        player.position = location
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
