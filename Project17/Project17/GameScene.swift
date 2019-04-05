@@ -93,6 +93,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.position = location
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if touches.first != nil {
+            isGameOver = true
+            gameTimer?.invalidate()
+            
+            let gameOver = SKSpriteNode(imageNamed: "gameOver")
+            gameOver.position = CGPoint(x: 512, y: 384)
+            addChild(gameOver)
+            
+            let scaleUp = SKAction.scale(to: 1.5, duration: 0.5)
+            let fadeIn = SKAction.fadeIn(withDuration: 0.5)
+            let groupOne = SKAction.group([scaleUp, fadeIn])
+            let scaleDown = SKAction.scale(to: 1, duration: 0.5)
+            let sequence = SKAction.sequence([groupOne, scaleDown])
+            gameOver.run(sequence)
+        }
+    }
+    
     func didBegin(_ contact: SKPhysicsContact) {
         let explosion = SKEmitterNode(fileNamed: "explosion")!
         explosion.position = player.position
