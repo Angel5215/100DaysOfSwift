@@ -23,8 +23,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //  MARK: Enemies
     var possibleEnemies = ["ball", "hammer", "tv"]
-    var isGameOver = false
+    
+    var isGameOver = false {
+        didSet {
+            if isGameOver {
+                gameOver()
+            }
+        }
+    }
+    
     var gameTimer: Timer?
+    
+    var enemyCount = 0
+    var enemyInterval: TimeInterval = 1
     
     override func didMove(to view: SKView) {
         backgroundColor = .black
@@ -52,10 +63,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.35, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: enemyInterval, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
     }
     
     @objc func createEnemy() {
+        
+        enemyCount += 1
+        if enemyCount.isMultiple(of: 20) {
+            enemyInterval -= 0.1
+            gameTimer?.invalidate()
+            
+            gameTimer = Timer.scheduledTimer(timeInterval: enemyInterval, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+            
+            print("Enemies now being created every \(enemyInterval) seconds. Enemy count: \(enemyCount)")
+        }
+        
         guard let enemy = possibleEnemies.randomElement() else { return }
         
         let sprite = SKSpriteNode(imageNamed: enemy)
@@ -94,20 +116,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if touches.first != nil {
+        if !isGameOver && !touches.isEmpty {
             isGameOver = true
-            gameTimer?.invalidate()
-            
-            let gameOver = SKSpriteNode(imageNamed: "gameOver")
-            gameOver.position = CGPoint(x: 512, y: 384)
-            addChild(gameOver)
-            
-            let scaleUp = SKAction.scale(to: 1.5, duration: 0.5)
-            let fadeIn = SKAction.fadeIn(withDuration: 0.5)
-            let groupOne = SKAction.group([scaleUp, fadeIn])
-            let scaleDown = SKAction.scale(to: 1, duration: 0.5)
-            let sequence = SKAction.sequence([groupOne, scaleDown])
-            gameOver.run(sequence)
         }
     }
     
@@ -121,4 +131,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         isGameOver = true
     }
+    
+    func gameOver() {
+        
+        gameTimer?.invalidate()
+        
+        let gameOver = SKSpriteNode(imageNamed: "gameOver")
+        gameOver.position = CGPoint(x: 512, y: 384)
+        addChild(gameOver)
+        
+        let scaleUp = SKAction.scale(to: 1.5, duration: 0.5)
+        let fadeIn = SKAction.fadeIn(withDuration: 0.5)
+        let groupOne = SKAction.group([scaleUp, fadeIn])
+        let scaleDown = SKAction.scale(to: 1, duration: 0.5)
+        let sequence = SKAction.sequence([groupOne, scaleDown])
+        gameOver.run(sequence)
+    }
+    
 }
