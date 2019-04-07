@@ -21,6 +21,8 @@ class DetailViewController: UIViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+        
+        assert(selectedImage != nil, "Selected image has no value!")
 		
 		if let imageToLoad = selectedImage {
 			imageView.image = UIImage(named: imageToLoad)
