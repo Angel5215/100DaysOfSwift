@@ -35,7 +35,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameTimer: Timer?
     
     var enemyCount = 0
-    var enemyInterval: TimeInterval = 1
+    var enemyInterval: Double = 1 {
+        didSet {
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = 1
+            formatter.minimumSignificantDigits = 2
+            let str = formatter.string(from: enemyInterval as NSNumber) ?? String(enemyInterval)
+            enemySpeedLabel.text = "Enemies created every \(str) seconds"
+        }
+    }
+    
+    var enemySpeedLabel: SKLabelNode!
     
     override func didMove(to view: SKView) {
         backgroundColor = .black
@@ -57,6 +67,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.horizontalAlignmentMode = .left
         addChild(scoreLabel)
         
+        enemySpeedLabel = SKLabelNode(fontNamed: "Chalkduster")
+        enemySpeedLabel.fontSize = 18
+        enemySpeedLabel.text = "Enemies created every second"
+        enemySpeedLabel.position = CGPoint(x: 650, y: 16)
+        enemySpeedLabel.horizontalAlignmentMode = .left
+        addChild(enemySpeedLabel)
+        
         score = 0
         
         //  CGVector.zero
@@ -74,14 +91,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameTimer?.invalidate()
             
             gameTimer = Timer.scheduledTimer(timeInterval: enemyInterval, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
-            
-            print("Enemies now being created every \(enemyInterval) seconds. Enemy count: \(enemyCount)")
         }
         
         guard let enemy = possibleEnemies.randomElement() else { return }
         
         let sprite = SKSpriteNode(imageNamed: enemy)
         sprite.position = CGPoint(x: 1200, y: Int.random(in: 50...736))
+        sprite.name = "enemy"
         addChild(sprite)
         
         sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
@@ -104,6 +120,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
+        guard isGameOver == false else { return }
         var location = touch.location(in: self)
         
         if location.y < 100 {
@@ -133,6 +150,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func gameOver() {
+        
+        for node in children where node.name == "enemy" {
+            node.removeFromParent()
+        }
+        
+        player.run(SKAction.sequence([.fadeOut(withDuration: 0.5), .removeFromParent()]))
         
         gameTimer?.invalidate()
         
