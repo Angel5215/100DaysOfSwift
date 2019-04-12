@@ -1,0 +1,5 @@
+
+{
+    "title": "alert(document.title);",
+    "date": "alert(new Date().toISOString().slice(0, 10));"
+}

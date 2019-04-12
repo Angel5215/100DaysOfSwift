@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA05E700225F106E00649726 /* code.json in Resources */ = {isa = PBXBuildFile; fileRef = FA05E6FF225F106E00649726 /* code.json */; };
 		FA8347D6225C4C8B00FBDF7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8347D5225C4C8B00FBDF7D /* AppDelegate.swift */; };
 		FA8347D8225C4C8B00FBDF7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8347D7225C4C8B00FBDF7D /* ViewController.swift */; };
 		FA8347DB225C4C8B00FBDF7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8347D9225C4C8B00FBDF7D /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FA05E6FF225F106E00649726 /* code.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = code.json; sourceTree = "<group>"; };
 		FA8347D2225C4C8B00FBDF7D /* Project19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project19.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8347D5225C4C8B00FBDF7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8347D7225C4C8B00FBDF7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				FA8347ED225C511500FBDF7D /* Media.xcassets */,
 				FA8347EF225C511500FBDF7D /* ActionViewController.swift */,
+				FA05E6FF225F106E00649726 /* code.json */,
 				FA8347F1225C511500FBDF7D /* MainInterface.storyboard */,
 				FA8347F4225C511500FBDF7D /* Info.plist */,
 				FA8347FC225C58F900FBDF7D /* Action.js */,
@@ -210,6 +213,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA05E700225F106E00649726 /* code.json in Resources */,
 				FA8347FD225C58F900FBDF7D /* Action.js in Resources */,
 				FA8347EE225C511500FBDF7D /* Media.xcassets in Resources */,
 				FA8347F3225C511500FBDF7D /* MainInterface.storyboard in Resources */,
