@@ -14,6 +14,9 @@
 		FA3E842B226046CA00458344 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3E8429226046CA00458344 /* Main.storyboard */; };
 		FA3E842D226046CB00458344 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3E842C226046CB00458344 /* Assets.xcassets */; };
 		FA3E8430226046CB00458344 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3E842E226046CB00458344 /* LaunchScreen.storyboard */; };
+		FA3E843F2260497100458344 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3E84382260497100458344 /* spark.png */; };
+		FA3E84422260497100458344 /* fuse.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA3E843B2260497100458344 /* fuse.sks */; };
+		FA3E84432260497100458344 /* explode.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA3E843C2260497100458344 /* explode.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		FA3E842C226046CB00458344 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA3E842F226046CB00458344 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA3E8431226046CB00458344 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA3E84382260497100458344 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		FA3E843B2260497100458344 /* fuse.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fuse.sks; sourceTree = "<group>"; };
+		FA3E843C2260497100458344 /* explode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = explode.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +72,19 @@
 				FA3E842C226046CB00458344 /* Assets.xcassets */,
 				FA3E842E226046CB00458344 /* LaunchScreen.storyboard */,
 				FA3E8431226046CB00458344 /* Info.plist */,
+				FA3E84372260497100458344 /* Content */,
 			);
 			path = Project20;
+			sourceTree = "<group>";
+		};
+		FA3E84372260497100458344 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				FA3E84382260497100458344 /* spark.png */,
+				FA3E843B2260497100458344 /* fuse.sks */,
+				FA3E843C2260497100458344 /* explode.sks */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,7 +145,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3E843F2260497100458344 /* spark.png in Resources */,
+				FA3E84422260497100458344 /* fuse.sks in Resources */,
 				FA3E842B226046CA00458344 /* Main.storyboard in Resources */,
+				FA3E84432260497100458344 /* explode.sks in Resources */,
 				FA3E8422226046CA00458344 /* GameScene.sks in Resources */,
 				FA3E842D226046CB00458344 /* Assets.xcassets in Resources */,
 				FA3E8430226046CB00458344 /* LaunchScreen.storyboard in Resources */,
