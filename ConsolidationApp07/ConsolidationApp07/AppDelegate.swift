@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationController = UINavigationController()
         navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.tintColor = UIColor(named: "NotesYellow")
+        navigationController.toolbar.tintColor = UIColor(named: "NotesYellow")
+        
         
         coordinator = MainCoordinator(navigationController: navigationController)
         coordinator?.start()

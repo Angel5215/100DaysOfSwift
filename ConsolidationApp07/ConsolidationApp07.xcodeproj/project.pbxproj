@@ -17,6 +17,7 @@
 		FA3B8010226654D2007D9F9D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B800F226654D2007D9F9D /* MainCoordinator.swift */; };
 		FA3B801222665549007D9F9D /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B801122665549007D9F9D /* Storyboarded.swift */; };
 		FA3B801422665750007D9F9D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B801322665750007D9F9D /* DetailViewController.swift */; };
+		FA3B80162266611A007D9F9D /* FileManager+DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B80152266611A007D9F9D /* FileManager+DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FA3B800F226654D2007D9F9D /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		FA3B801122665549007D9F9D /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		FA3B801322665750007D9F9D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FA3B80152266611A007D9F9D /* FileManager+DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+DocumentsDirectory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				FA3B800B2266538F007D9F9D /* Storyboards */,
 				FA3B800A22665385007D9F9D /* ViewControllers */,
 				FA3B800922665380007D9F9D /* Coordinators */,
+				FA3B80172266611E007D9F9D /* Extensions */,
 				FA3B7FF522664D2E007D9F9D /* AppDelegate.swift */,
 				FA3B801122665549007D9F9D /* Storyboarded.swift */,
 				FA3B7FFC22664D2F007D9F9D /* Assets.xcassets */,
@@ -109,6 +112,14 @@
 				FA3B800722664ED2007D9F9D /* Note.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FA3B80172266611E007D9F9D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA3B80152266611A007D9F9D /* FileManager+DocumentsDirectory.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 				FA3B7FF822664D2E007D9F9D /* MainViewController.swift in Sources */,
 				FA3B7FF622664D2E007D9F9D /* AppDelegate.swift in Sources */,
 				FA3B8010226654D2007D9F9D /* MainCoordinator.swift in Sources */,
+				FA3B80162266611A007D9F9D /* FileManager+DocumentsDirectory.swift in Sources */,
 				FA3B800822664ED2007D9F9D /* Note.swift in Sources */,
 				FA3B801222665549007D9F9D /* Storyboarded.swift in Sources */,
 				FA3B801422665750007D9F9D /* DetailViewController.swift in Sources */,

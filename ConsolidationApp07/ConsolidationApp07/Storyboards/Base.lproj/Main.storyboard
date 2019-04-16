@@ -17,7 +17,8 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="l98-IE-KYB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.97646147012710571" green="0.97646445035934448" blue="0.97647088766098022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Note" textLabel="mcB-Y9-Fm8" detailTextLabel="FEc-0q-IVS" style="IBUITableViewCellStyleSubtitle" id="2U6-W3-FOI">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
@@ -42,6 +43,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -64,19 +66,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ql5-bF-1JF">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="8" y="44" width="398" height="818"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2jL-vI-ahz" id="54E-o3-U3C"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="08o-gR-2N0" firstAttribute="bottom" secondItem="Ql5-bF-1JF" secondAttribute="bottom" id="4s0-Ul-ATu"/>
                             <constraint firstItem="Ql5-bF-1JF" firstAttribute="top" secondItem="08o-gR-2N0" secondAttribute="top" id="BWC-8R-o17"/>
-                            <constraint firstItem="Ql5-bF-1JF" firstAttribute="leading" secondItem="08o-gR-2N0" secondAttribute="leading" id="DIB-3V-JW9"/>
-                            <constraint firstItem="08o-gR-2N0" firstAttribute="trailing" secondItem="Ql5-bF-1JF" secondAttribute="trailing" id="gnQ-ug-YZf"/>
+                            <constraint firstItem="Ql5-bF-1JF" firstAttribute="leading" secondItem="08o-gR-2N0" secondAttribute="leading" constant="8" id="DIB-3V-JW9"/>
+                            <constraint firstItem="08o-gR-2N0" firstAttribute="trailing" secondItem="Ql5-bF-1JF" secondAttribute="trailing" constant="8" id="gnQ-ug-YZf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="08o-gR-2N0"/>
                     </view>
@@ -86,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hf5-1m-Wek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1568.1159420289857" y="5.3571428571428568"/>
+            <point key="canvasLocation" x="1723" y="5"/>
         </scene>
     </scenes>
 </document>

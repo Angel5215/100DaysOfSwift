@@ -12,18 +12,24 @@ class MainViewController: UITableViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
     
-    var notes = [Note]()
+    var notes: [Note]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        notes.append(Note(content: "Sample text 1", date: Date(timeIntervalSinceNow: -86400)))
+        notes = Note.loadFromFile()
+        
+        /*notes.append(Note(content: "Sample text 1", date: Date(timeIntervalSinceNow: -86400)))
         notes.append(Note(content: "Sample text 2"))
         notes.append(Note(content: "Sample text 3"))
         notes.append(Note(content: "Sample text 4"))
-        notes.append(Note(content: "Sample text 5"))
+        notes.append(Note(content: "Sample text 5"))*/
         
         navigationController?.isToolbarHidden = false
+        
+        let composeButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(compose))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbarItems = [flexibleSpace, composeButton]
     }
     
     //  MARK: Cell creation
@@ -37,18 +43,33 @@ class MainViewController: UITableViewController, Storyboarded {
         let note = notes[indexPath.row]
         
         cell.textLabel?.text = note.title
-        cell.detailTextLabel?.text = note.date
+        cell.detailTextLabel?.text = "\(note.date)\t\(note.additionalText)"
         
         return cell
     }
     
+    
+    //  MARK: Note handling
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let note = notes[indexPath.row]
-        coordinator?.editNote(note)
+        coordinator?.editNote(note, at: indexPath, updateIn: self)
     }
     
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        print(indexPath)
+    @objc func compose() {
+        coordinator?.compose(updateIn: self)
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteNote(at: indexPath)
+        }
+    }
+    
+    func deleteNote(at indexPath: IndexPath) {
+        notes.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        Note.save(contents: notes)
+    }
+
 }
 
