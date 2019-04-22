@@ -14,6 +14,9 @@
 		FA1D0B95226A912F005BE8AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1D0B93226A912F005BE8AB /* Main.storyboard */; };
 		FA1D0B97226A9130005BE8AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA1D0B96226A9130005BE8AB /* Assets.xcassets */; };
 		FA1D0B9A226A9130005BE8AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1D0B98226A9130005BE8AB /* LaunchScreen.storyboard */; };
+		FA7FA443226D73DD00690F9A /* penguinSpecial.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7FA441226D73DD00690F9A /* penguinSpecial.png */; };
+		FA7FA444226D73DD00690F9A /* penguinSpecial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7FA442226D73DD00690F9A /* penguinSpecial@2x.png */; };
+		FA7FA446226D95E900690F9A /* gameOver@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7FA445226D95E900690F9A /* gameOver@2x.png */; };
 		FAB88936226A932D00B6F43A /* sliceFuse.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAB88920226A932D00B6F43A /* sliceFuse.sks */; };
 		FAB88937226A932D00B6F43A /* sliceLife@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB88921226A932D00B6F43A /* sliceLife@2x.png */; };
 		FAB88938226A932D00B6F43A /* sliceBomb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB88922226A932D00B6F43A /* sliceBomb@2x.png */; };
@@ -48,6 +51,10 @@
 		FA1D0B96226A9130005BE8AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA1D0B99226A9130005BE8AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA1D0B9B226A9130005BE8AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA7FA441226D73DD00690F9A /* penguinSpecial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penguinSpecial.png; sourceTree = "<group>"; };
+		FA7FA442226D73DD00690F9A /* penguinSpecial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "penguinSpecial@2x.png"; sourceTree = "<group>"; };
+		FA7FA445226D95E900690F9A /* gameOver@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gameOver@2x.png"; sourceTree = "<group>"; };
+		FA7FA447226D96AA00690F9A /* ding.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ding.caf; sourceTree = "<group>"; };
 		FAB88920226A932D00B6F43A /* sliceFuse.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sliceFuse.sks; sourceTree = "<group>"; };
 		FAB88921226A932D00B6F43A /* sliceLife@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sliceLife@2x.png"; sourceTree = "<group>"; };
 		FAB88922226A932D00B6F43A /* sliceBomb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sliceBomb@2x.png"; sourceTree = "<group>"; };
@@ -130,12 +137,16 @@
 				FAB88929226A932D00B6F43A /* penguin.png */,
 				FAB8892A226A932D00B6F43A /* explosion.caf */,
 				FAB8892B226A932D00B6F43A /* sliceBackground@2x.png */,
+				FA7FA447226D96AA00690F9A /* ding.caf */,
 				FAB8892C226A932D00B6F43A /* sliceBomb.png */,
 				FAB8892D226A932D00B6F43A /* sliceLifeGone.png */,
 				FAB8892E226A932D00B6F43A /* sliceHitEnemy.sks */,
 				FAB8892F226A932D00B6F43A /* sliceBombFuse.caf */,
 				FAB88930226A932D00B6F43A /* sliceHitBomb.sks */,
 				FAB88931226A932D00B6F43A /* penguin@2x.png */,
+				FA7FA445226D95E900690F9A /* gameOver@2x.png */,
+				FA7FA441226D73DD00690F9A /* penguinSpecial.png */,
+				FA7FA442226D73DD00690F9A /* penguinSpecial@2x.png */,
 				FAB88932226A932D00B6F43A /* sliceLife.png */,
 				FAB88933226A932D00B6F43A /* swoosh3.caf */,
 				FAB88934226A932D00B6F43A /* swoosh2.caf */,
@@ -208,6 +219,7 @@
 				FA1D0B95226A912F005BE8AB /* Main.storyboard in Resources */,
 				FAB88942226A932D00B6F43A /* sliceBomb.png in Resources */,
 				FAB8893E226A932D00B6F43A /* launch.caf in Resources */,
+				FA7FA443226D73DD00690F9A /* penguinSpecial.png in Resources */,
 				FAB88941226A932D00B6F43A /* sliceBackground@2x.png in Resources */,
 				FAB8893A226A932D00B6F43A /* sliceLifeGone@2x.png in Resources */,
 				FAB88937226A932D00B6F43A /* sliceLife@2x.png in Resources */,
@@ -221,11 +233,13 @@
 				FAB88939226A932D00B6F43A /* sliceBackground.png in Resources */,
 				FAB8893C226A932D00B6F43A /* wrong.caf in Resources */,
 				FAB88940226A932D00B6F43A /* explosion.caf in Resources */,
+				FA7FA446226D95E900690F9A /* gameOver@2x.png in Resources */,
 				FAB88949226A932D00B6F43A /* swoosh3.caf in Resources */,
 				FA1D0B9A226A9130005BE8AB /* LaunchScreen.storyboard in Resources */,
 				FAB88946226A932D00B6F43A /* sliceHitBomb.sks in Resources */,
 				FAB8893D226A932D00B6F43A /* whack.caf in Resources */,
 				FAB88948226A932D00B6F43A /* sliceLife.png in Resources */,
+				FA7FA444226D73DD00690F9A /* penguinSpecial@2x.png in Resources */,
 				FAB88943226A932D00B6F43A /* sliceLifeGone.png in Resources */,
 				FAB88947226A932D00B6F43A /* penguin@2x.png in Resources */,
 			);
