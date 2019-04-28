@@ -26,8 +26,13 @@ class ViewController: UICollectionViewController {
         super.viewDidLoad()
         
         title = "Selfie Share"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
+        let importPictureButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
+        let sendMessageButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(sendMessage))
+        let connectionButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
+        let showConnectionsButton = UIBarButtonItem(title: "Show", style: .plain, target: self, action: #selector(showConnections))
+        
+        navigationItem.rightBarButtonItems = [importPictureButton, sendMessageButton]
+        navigationItem.leftBarButtonItems = [connectionButton, showConnectionsButton]
         
         //  Inititialize MCSession
         mcSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
@@ -76,7 +81,54 @@ class ViewController: UICollectionViewController {
         mcBrowser.delegate = self
         present(mcBrowser, animated: true)
     }
-
+    
+    func showAlert(title: String?, message: String?, style: UIAlertController.Style = .alert, actions: UIAlertAction...) {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: style)
+        
+        for action in actions {
+            ac.addAction(action)
+        }
+        
+        present(ac, animated: true)
+    }
+    
+    @objc func sendMessage() {
+        let ac = UIAlertController(title: "Send message", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        
+        ac.addAction(UIAlertAction(title: "Send", style: .default, handler: { [weak self, weak ac] _ in
+            guard let textfield = ac?.textFields?.first else { return }
+            guard let text = textfield.text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty else { return }
+            guard let mcSession = self?.mcSession else { return }
+            
+            if !mcSession.connectedPeers.isEmpty {
+                let data = Data(text.utf8)
+                
+                do {
+                    try self?.mcSession?.send(data, toPeers: mcSession.connectedPeers, with: .reliable)
+                } catch {
+                    self?.showAlert(title: "Error", message: error.localizedDescription, actions: .ok)
+                }
+            }
+        }))
+        ac.addAction(.cancel)
+        
+        present(ac, animated: true)
+    }
+    
+    @objc func showConnections() {
+        guard let mcSession = mcSession else {
+            showAlert(title: "Error", message: "There's no active session.", actions: .ok)
+            return
+        }
+        
+        if mcSession.connectedPeers.count == 0 {
+            showAlert(title: "No people here.", message: "There are no active connections in this session.", actions: .ok)
+        } else {
+            let peers = mcSession.connectedPeers.map { #""\#($0.displayName)""# }.joined(separator: ", ")
+            showAlert(title: "Active connections", message: "Currently connected devices: \(peers)", actions: .ok)
+        }
+    }
 }
 
 extension ViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -93,9 +145,7 @@ extension ViewController: UINavigationControllerDelegate, UIImagePickerControlle
                 do {
                     try mcSession.send(imageData, toPeers: mcSession.connectedPeers, with: .reliable)
                 } catch {
-                    let ac = UIAlertController(title: "Send error", message: error.localizedDescription, preferredStyle: .alert)
-                    ac.addAction(UIAlertAction(title: "OK", style: .default))
-                    present(ac, animated: true)
+                    showAlert(title: "Send error", message: error.localizedDescription, actions: .ok)
                 }
             }
         }
@@ -110,7 +160,7 @@ extension ViewController: MCSessionDelegate, MCBrowserViewControllerDelegate {
         case .connecting:
             print("Connecting: \(peerID.displayName)")
         case .notConnected:
-            print("Not connected: \(peerID.displayName)")
+            showAlert(title: "Not connected", message: "\(peerID.displayName) has disconnected.", actions: .ok)
         @unknown default:
             print("Unknown state received: \(peerID.displayName)")
         }
@@ -121,6 +171,8 @@ extension ViewController: MCSessionDelegate, MCBrowserViewControllerDelegate {
             if let image = UIImage(data: data) {
                 self?.images.insert(image, at: 0)
                 self?.collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+            } else if let message = String(data: data, encoding: .utf8) {
+                self?.showAlert(title: "Received message", message: message, actions: .ok)
             }
         }
     }
@@ -146,4 +198,14 @@ extension ViewController: MCSessionDelegate, MCBrowserViewControllerDelegate {
     }
     
     
+}
+
+extension UIAlertAction {
+    static var ok: UIAlertAction {
+        return self.init(title: "OK", style: .default)
+    }
+    
+    static var cancel: UIAlertAction {
+        return self.init(title: "Cancel", style: .cancel)
+    }
 }
