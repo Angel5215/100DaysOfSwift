@@ -19,13 +19,13 @@ enum CollisionTypes: UInt32 {
 
 class GameScene: SKScene {
     
+    // MARK: - Player properties
     var player: SKSpriteNode!
-    var lastTouchPosition: CGPoint?
     
-    //  MARK: Accelerometer
+    //  MARK: - Accelerometer properties
     var motionManager: CMMotionManager!
     
-    //  MARK: Game
+    //  MARK: - Game properties
     var scoreLabel: SKLabelNode!
     var score = 0 {
         didSet {
@@ -35,6 +35,7 @@ class GameScene: SKScene {
     
     var isGameOver = false
     
+    // MARK: - Scene life cycle
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background.jpg")
         background.position = CGPoint(x: 512, y: 384)
@@ -56,73 +57,61 @@ class GameScene: SKScene {
         
         physicsWorld.contactDelegate = self
         
-        loadLevel()
+        loadLevel(named: "level1")
         createPlayer()
     }
     
-    func loadLevel() {
-        guard let levelURL = Bundle.main.url(forResource: "level1", withExtension: "txt") else {
-            fatalError("Could not find level1.txt in the app bundle.")
+    override func update(_ currentTime: TimeInterval) {
+        
+        guard isGameOver == false else { return }
+        
+        #if targetEnvironment(simulator)
+        if let currentTouch = lastTouchPosition {
+            let diff = CGPoint(x: currentTouch.x - player.position.x, y: currentTouch.y - player.position.y)
+            physicsWorld.gravity = CGVector(dx: diff.x / 100, dy: diff.y / 100)
+        }
+        #else
+        if let accelerometerData = motionManager.accelerometerData {
+            physicsWorld.gravity = CGVector(dx: accelerometerData.acceleration.y * -50, dy: accelerometerData.acceleration.x * 50)
+        }
+        #endif
+    }
+
+    
+    // MARK: - Level creation
+    func loadLevel(named levelName: String) {
+        guard let levelURL = Bundle.main.url(forResource: "\(levelName)", withExtension: "txt") else {
+            fatalError("Could not find \(levelName) in the app bundle.")
         }
         
         guard let levelString = try? String(contentsOf: levelURL) else {
-            fatalError("Could not load level1.txt from the app bundle.")
+            fatalError("Could not load \(levelName) from the app bundle.")
         }
         
-        let lines = levelString.components(separatedBy: "\n")
+        let lines = levelString.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: "\n")
         
         for (row, line) in lines.reversed().enumerated() {
             for (column, letter) in line.enumerated() {
                 let position = CGPoint(x: 64 * column + 32, y: 64 * row + 32)
-                
-                if letter == "x" {  //  Wall
-                    let node = SKSpriteNode(imageNamed: "block")
-                    node.position = position
-                    
-                    node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
-                    node.physicsBody?.categoryBitMask = CollisionTypes.wall.rawValue
-                    node.physicsBody?.isDynamic = false
-                    addChild(node)
-                } else if letter == "v" {   //  Vortex (deadly to players)
-                    let node = SKSpriteNode(imageNamed: "vortex")
-                    node.name = "vortex"
-                    node.position = position
-                    node.run(SKAction.repeatForever(SKAction.rotate(byAngle: .pi, duration: 1)))
-                    node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
-                    node.physicsBody?.isDynamic = false
-                    
-                    node.physicsBody?.categoryBitMask = CollisionTypes.vortex.rawValue
-                    node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
-                    node.physicsBody?.collisionBitMask = 0
-                    addChild(node)
-                } else if letter == "s" {   //  Star.
-                    let node = SKSpriteNode(imageNamed: "star")
-                    node.name = "star"
-                    node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
-                    node.physicsBody?.isDynamic = false
-                    
-                    node.physicsBody?.categoryBitMask = CollisionTypes.star.rawValue
-                    node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
-                    node.physicsBody?.collisionBitMask = 0
-                    node.position = position
-                    addChild(node)
-                } else if letter == "f" {   //  Finish.
-                    let node = SKSpriteNode(imageNamed: "finish")
-                    node.name = "finish"
-                    node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
-                    node.physicsBody?.isDynamic = false
-                    
-                    node.physicsBody?.categoryBitMask = CollisionTypes.finish.rawValue
-                    node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
-                    node.physicsBody?.collisionBitMask = 0
-                    node.position = position
-                    addChild(node)
-                } else if letter == " " {   //  Do nothing in empty spaces.
-                    
-                } else {
-                    fatalError("Unknown level letter: \(letter)")
-                }
+                createNode(forLetter: letter, at: position)
             }
+        }
+    }
+    
+    func createNode(forLetter letter: Character, at position: CGPoint) {
+        switch letter {
+        case "x": // Wall
+            createBlock(at: position)
+        case "v": // Vortex
+            createVortex(at: position)
+        case "s": // Star
+            createStar(at: position)
+        case "f": // Finish
+            createFinish(at: position)
+        case " ": // Level empty space
+            break
+        default:
+            fatalError("Unknown level letter: \(letter)")
         }
     }
     
@@ -140,7 +129,59 @@ class GameScene: SKScene {
         addChild(player)
     }
     
-    //  MARK: Simulator-only
+    func createBlock(at position: CGPoint) {
+        let node = SKSpriteNode(imageNamed: "block")
+        node.position = position
+        
+        node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
+        node.physicsBody?.categoryBitMask = CollisionTypes.wall.rawValue
+        node.physicsBody?.isDynamic = false
+        addChild(node)
+    }
+    
+    func createVortex(at position: CGPoint) {
+        let node = SKSpriteNode(imageNamed: "vortex")
+        node.name = "vortex"
+        node.position = position
+        node.run(SKAction.repeatForever(SKAction.rotate(byAngle: .pi, duration: 1)))
+        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+        node.physicsBody?.isDynamic = false
+        
+        node.physicsBody?.categoryBitMask = CollisionTypes.vortex.rawValue
+        node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+        node.physicsBody?.collisionBitMask = 0
+        addChild(node)
+    }
+    
+    func createStar(at position: CGPoint) {
+        let node = SKSpriteNode(imageNamed: "star")
+        node.name = "star"
+        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+        node.physicsBody?.isDynamic = false
+        
+        node.physicsBody?.categoryBitMask = CollisionTypes.star.rawValue
+        node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+        node.physicsBody?.collisionBitMask = 0
+        node.position = position
+        addChild(node)
+    }
+    
+    func createFinish(at position: CGPoint) {
+        let node = SKSpriteNode(imageNamed: "finish")
+        node.name = "finish"
+        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+        node.physicsBody?.isDynamic = false
+        
+        node.physicsBody?.categoryBitMask = CollisionTypes.finish.rawValue
+        node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+        node.physicsBody?.collisionBitMask = 0
+        node.position = position
+        addChild(node)
+    }
+    
+    //  MARK: - Simulator-only
+    var lastTouchPosition: CGPoint?
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
@@ -157,20 +198,19 @@ class GameScene: SKScene {
         lastTouchPosition = nil
     }
     
-    override func update(_ currentTime: TimeInterval) {
+}
+
+//  MARK: - Collision handling
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let nodeA = contact.bodyA.node else { return }
+        guard let nodeB = contact.bodyB.node else { return }
         
-        guard isGameOver == false else { return }
-        
-        #if targetEnvironment(simulator)
-        if let currentTouch = lastTouchPosition {
-            let diff = CGPoint(x: currentTouch.x - player.position.x, y: currentTouch.y - player.position.y)
-            physicsWorld.gravity = CGVector(dx: diff.x / 100, dy: diff.y / 100)
+        if nodeA == player {
+            playerCollided(with: nodeB)
+        } else {
+            playerCollided(with: nodeA)
         }
-        #else
-        if let accelerometerData = motionManager.accelerometerData {
-            physicsWorld.gravity = CGVector(dx: accelerometerData.acceleration.y * -50, dy: accelerometerData.acceleration.x * 50)
-        }
-        #endif
     }
     
     func playerCollided(with node: SKNode) {
@@ -193,19 +233,6 @@ class GameScene: SKScene {
             score += 1
         } else if node.name == "finish" {
             // next level?
-        }
-    }
-}
-
-extension GameScene: SKPhysicsContactDelegate {
-    func didBegin(_ contact: SKPhysicsContact) {
-        guard let nodeA = contact.bodyA.node else { return }
-        guard let nodeB = contact.bodyB.node else { return }
-        
-        if nodeA == player {
-            playerCollided(with: nodeB)
-        } else {
-            playerCollided(with: nodeA)
         }
     }
 }
