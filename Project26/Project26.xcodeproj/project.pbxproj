@@ -27,6 +27,11 @@
 		FA81167A2275636100E60928 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = FA81166D2275636100E60928 /* star.png */; };
 		FA81167B2275636100E60928 /* background@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA81166E2275636100E60928 /* background@2x.jpg */; };
 		FA81167C2275636100E60928 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = FA81166F2275636100E60928 /* player.png */; };
+		FAAA591A228755CC0009917F /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = FAAA5919228755CB0009917F /* level2.txt */; };
+		FAAA591C22875A4C0009917F /* portal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAA591B22875A4C0009917F /* portal@2x.png */; };
+		FAAA591E22875A4F0009917F /* portal.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAA591D22875A4F0009917F /* portal.png */; };
+		FAAA592022875A530009917F /* disabledPortal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAA591F22875A530009917F /* disabledPortal@2x.png */; };
+		FAAA592222875A590009917F /* disabledPortal.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAA592122875A590009917F /* disabledPortal.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +57,11 @@
 		FA81166D2275636100E60928 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		FA81166E2275636100E60928 /* background@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "background@2x.jpg"; sourceTree = "<group>"; };
 		FA81166F2275636100E60928 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
+		FAAA5919228755CB0009917F /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
+		FAAA591B22875A4C0009917F /* portal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portal@2x.png"; sourceTree = "<group>"; };
+		FAAA591D22875A4F0009917F /* portal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portal.png; sourceTree = "<group>"; };
+		FAAA591F22875A530009917F /* disabledPortal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disabledPortal@2x.png"; sourceTree = "<group>"; };
+		FAAA592122875A590009917F /* disabledPortal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disabledPortal.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +112,7 @@
 			children = (
 				FA8116632275636100E60928 /* finish@2x.png */,
 				FA8116642275636100E60928 /* level1.txt */,
+				FAAA5919228755CB0009917F /* level2.txt */,
 				FA8116652275636100E60928 /* star@2x.png */,
 				FA8116662275636100E60928 /* player@2x.png */,
 				FA8116672275636100E60928 /* background.jpg */,
@@ -113,6 +124,10 @@
 				FA81166D2275636100E60928 /* star.png */,
 				FA81166E2275636100E60928 /* background@2x.jpg */,
 				FA81166F2275636100E60928 /* player.png */,
+				FAAA591D22875A4F0009917F /* portal.png */,
+				FAAA591B22875A4C0009917F /* portal@2x.png */,
+				FAAA592122875A590009917F /* disabledPortal.png */,
+				FAAA591F22875A530009917F /* disabledPortal@2x.png */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -178,14 +193,19 @@
 				FA8116742275636100E60928 /* background.jpg in Resources */,
 				FA8116562275621900E60928 /* Main.storyboard in Resources */,
 				FA8116792275636100E60928 /* vortex@2x.png in Resources */,
+				FAAA592022875A530009917F /* disabledPortal@2x.png in Resources */,
 				FA8116762275636100E60928 /* block.png in Resources */,
 				FA81164D2275621900E60928 /* GameScene.sks in Resources */,
 				FA8116772275636100E60928 /* block@2x.png in Resources */,
 				FA8116722275636100E60928 /* star@2x.png in Resources */,
 				FA8116702275636100E60928 /* finish@2x.png in Resources */,
+				FAAA591A228755CC0009917F /* level2.txt in Resources */,
+				FAAA591C22875A4C0009917F /* portal@2x.png in Resources */,
 				FA8116782275636100E60928 /* finish.png in Resources */,
+				FAAA591E22875A4F0009917F /* portal.png in Resources */,
 				FA81167C2275636100E60928 /* player.png in Resources */,
 				FA8116712275636100E60928 /* level1.txt in Resources */,
+				FAAA592222875A590009917F /* disabledPortal.png in Resources */,
 				FA81167B2275636100E60928 /* background@2x.jpg in Resources */,
 				FA8116582275621A00E60928 /* Assets.xcassets in Resources */,
 				FA81167A2275636100E60928 /* star.png in Resources */,

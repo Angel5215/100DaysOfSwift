@@ -10,11 +10,12 @@ import SpriteKit
 import CoreMotion
 
 enum CollisionTypes: UInt32 {
-    case player = 1
-    case wall = 2
-    case star = 4
-    case vortex = 8
-    case finish = 16
+    case player = 1     // 0000 0000 0000 0000 0000 0000 0000 0001
+    case wall = 2       // 0000 0000 0000 0000 0000 0000 0000 0010
+    case star = 4       // 0000 0000 0000 0000 0000 0000 0000 0100
+    case vortex = 8     // 0000 0000 0000 0000 0000 0000 0000 1000
+    case finish = 16    // 0000 0000 0000 0000 0000 0000 0001 0000
+    case portal = 32    // 0000 0000 0000 0000 0000 0000 0010 0000
 }
 
 class GameScene: SKScene {
@@ -33,11 +34,14 @@ class GameScene: SKScene {
         }
     }
     
+    var activePortals = [Character: [SKNode]]()
+    
     var isGameOver = false
     
     // MARK: - Scene life cycle
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background.jpg")
+        background.name = "always"
         background.position = CGPoint(x: 512, y: 384)
         background.blendMode = .replace
         background.zPosition = -1
@@ -49,6 +53,7 @@ class GameScene: SKScene {
         motionManager.startAccelerometerUpdates()
         
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.name = "always"
         scoreLabel.text = "Score: 0"
         scoreLabel.horizontalAlignmentMode = .left
         scoreLabel.position = CGPoint(x: 16, y: 16)
@@ -108,6 +113,8 @@ class GameScene: SKScene {
             createStar(at: position)
         case "f": // Finish
             createFinish(at: position)
+        case "p", "q", "w":
+            createPortal(at: position, ofType: letter)
         case " ": // Level empty space
             break
         default:
@@ -179,6 +186,36 @@ class GameScene: SKScene {
         addChild(node)
     }
     
+    func createPortal(at position: CGPoint, ofType type: Character) {
+        let node = SKSpriteNode(imageNamed: "portal")
+        node.name = "portal-\(type)"
+        
+        
+        let rotate = SKAction.rotate(byAngle: .pi, duration: 1)
+        let sequence = SKAction.sequence([.scale(to: 0.7, duration: 0.5), .scale(to: 1, duration: 0.5)])
+        let group = SKAction.group([sequence, rotate])
+        node.run(SKAction.repeatForever(group))
+        
+        addPortal(node, ofType: type)
+        
+        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+        node.physicsBody?.isDynamic = false
+        node.physicsBody?.categoryBitMask = CollisionTypes.portal.rawValue
+        node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+        node.physicsBody?.collisionBitMask = 0
+        
+        node.position = position
+        addChild(node)
+    }
+    
+    func addPortal(_ portal: SKNode, ofType type: Character) {
+        if var array = activePortals[type] {
+            array.append(portal)
+        } else {
+            activePortals[type] = [portal]
+        }
+    }
+    
     //  MARK: - Simulator-only
     var lastTouchPosition: CGPoint?
     
@@ -232,7 +269,12 @@ extension GameScene: SKPhysicsContactDelegate {
             node.removeFromParent()
             score += 1
         } else if node.name == "finish" {
-            // next level?
+            activePortals.removeAll(keepingCapacity: true)
+            for child in children where child.name != "always" {
+                child.removeFromParent()
+            }
+            loadLevel(named: "level2")
+            createPlayer()
         }
     }
 }
