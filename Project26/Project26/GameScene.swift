@@ -34,7 +34,7 @@ class GameScene: SKScene {
         }
     }
     
-    var activePortals = [Character: [SKNode]]()
+    var activePortals = [Character: PortalPair]()
     
     var isGameOver = false
     
@@ -209,10 +209,12 @@ class GameScene: SKScene {
     }
     
     func addPortal(_ portal: SKNode, ofType type: Character) {
-        if var array = activePortals[type] {
-            array.append(portal)
+        if let pair = activePortals[type] {
+            pair.setSecondPortal(portal)
         } else {
-            activePortals[type] = [portal]
+            let portalPair = PortalPair()
+            activePortals[type] = portalPair
+            portalPair.setFirstPortal(portal)
         }
     }
     
@@ -251,30 +253,76 @@ extension GameScene: SKPhysicsContactDelegate {
     }
     
     func playerCollided(with node: SKNode) {
-        if node.name == "vortex" {
-            player.physicsBody?.isDynamic = false
-            isGameOver = true
-            score -= 1
-            
-            let move = SKAction.move(to: node.position, duration: 0.25)
-            let scale = SKAction.scale(to: 0.0001, duration: 0.25)
-            let remove = SKAction.removeFromParent()
-            let sequence = SKAction.sequence([move, scale, remove])
-            
-            player.run(sequence) { [weak self] in
-                self?.createPlayer()
-                self?.isGameOver = false
-            }
-        } else if node.name == "star" {
-            node.removeFromParent()
-            score += 1
-        } else if node.name == "finish" {
-            activePortals.removeAll(keepingCapacity: true)
-            for child in children where child.name != "always" {
-                child.removeFromParent()
-            }
-            loadLevel(named: "level2")
-            createPlayer()
+        switch node.name {
+        case "vortex":
+            collisionWithVortex(node)
+        case "star":
+            collisionWithStar(node)
+        case "finish":
+            finishCollision()
+        case let name? where name.hasPrefix("portal"):
+            let portalType = name.last!
+            collisionWithPortal(node, ofType: portalType)
+        default:
+            break
         }
+    }
+    
+    func collisionWithVortex(_ vortex: SKNode) {
+        player.physicsBody?.isDynamic = false
+        isGameOver = true
+        score -= 1
+        
+        let move = SKAction.move(to: vortex.position, duration: 0.25)
+        let scale = SKAction.scale(to: 0.0001, duration: 0.25)
+        let remove = SKAction.removeFromParent()
+        let sequence = SKAction.sequence([move, scale, remove])
+        
+        player.run(sequence) { [weak self] in
+            self?.createPlayer()
+            self?.isGameOver = false
+        }
+    }
+    
+    func collisionWithStar(_ star: SKNode) {
+        star.removeFromParent()
+        score += 1
+    }
+    
+    func finishCollision() {
+        
+        activePortals.removeAll(keepingCapacity: true)
+        
+        for child in children where child.name != "always" {
+            child.removeFromParent()
+        }
+        
+        loadLevel(named: "level2")
+        createPlayer()
+    }
+    
+    func collisionWithPortal(_ portal: SKNode, ofType type: Character) {
+        guard let portalPair = activePortals[type]?.getPair(), let portal = portal as? SKSpriteNode else {
+            fatalError("Could not get pair of '\(type)' portals.")
+        }
+        
+        let twinPortal = (portal === portalPair.first) ? portalPair.second : portalPair.first
+        
+        // Disable portals.
+        portal.texture = SKTexture(imageNamed: "disabledPortal")
+        portal.removeAllActions()
+        portal.name = nil
+        
+        twinPortal.texture = SKTexture(imageNamed: "disabledPortal")
+        twinPortal.removeAllActions()
+        twinPortal.name = nil
+        
+        //  Teleport player.
+        let portalMove = SKAction.move(to: portal.position, duration: 0.25)
+        let scaleDown = SKAction.scale(to: 0.0001, duration: 0.25)
+        let teleportMove = SKAction.run { [unowned self] in self.player.position = twinPortal.position }
+        let revertScale = SKAction.scale(to: 1, duration: 0.25)
+        let sequence = SKAction.sequence([portalMove, scaleDown, teleportMove, revertScale])
+        player.run(sequence)
     }
 }

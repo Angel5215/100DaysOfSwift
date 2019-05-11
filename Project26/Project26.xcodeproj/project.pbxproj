@@ -32,6 +32,7 @@
 		FAAA591E22875A4F0009917F /* portal.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAA591D22875A4F0009917F /* portal.png */; };
 		FAAA592022875A530009917F /* disabledPortal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAA591F22875A530009917F /* disabledPortal@2x.png */; };
 		FAAA592222875A590009917F /* disabledPortal.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAA592122875A590009917F /* disabledPortal.png */; };
+		FAAA592422876CE80009917F /* PortalPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAA592322876CE80009917F /* PortalPair.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		FAAA591D22875A4F0009917F /* portal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portal.png; sourceTree = "<group>"; };
 		FAAA591F22875A530009917F /* disabledPortal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disabledPortal@2x.png"; sourceTree = "<group>"; };
 		FAAA592122875A590009917F /* disabledPortal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disabledPortal.png; sourceTree = "<group>"; };
+		FAAA592322876CE80009917F /* PortalPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalPair.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				FA81164A2275621900E60928 /* AppDelegate.swift */,
 				FA81164C2275621900E60928 /* GameScene.sks */,
 				FA8116502275621900E60928 /* GameScene.swift */,
+				FAAA592322876CE80009917F /* PortalPair.swift */,
 				FA8116522275621900E60928 /* GameViewController.swift */,
 				FA8116542275621900E60928 /* Main.storyboard */,
 				FA8116572275621A00E60928 /* Assets.xcassets */,
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8116512275621900E60928 /* GameScene.swift in Sources */,
+				FAAA592422876CE80009917F /* PortalPair.swift in Sources */,
 				FA8116532275621900E60928 /* GameViewController.swift in Sources */,
 				FA81164B2275621900E60928 /* AppDelegate.swift in Sources */,
 			);
