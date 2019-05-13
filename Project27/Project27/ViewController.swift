@@ -36,6 +36,8 @@ class ViewController: UIViewController {
             drawCircle()
         case 2:
             drawCheckerboard()
+        case 3:
+            drawRotatedSquares()
         default:
             break
         }
@@ -105,6 +107,27 @@ class ViewController: UIViewController {
                     }
                 }
             }
+        }
+        
+        imageView.image = image
+    }
+    
+    func drawRotatedSquares() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let image = renderer.image { context in
+            context.cgContext.translateBy(x: 256, y: 256)
+            
+            let rotations = 16
+            let amount = Double.pi / Double(rotations)
+            
+            for _ in 0 ..< rotations {
+                context.cgContext.rotate(by: CGFloat(amount))
+                context.cgContext.addRect(CGRect(x: -128, y: -128, width: 256, height: 256))
+            }
+            
+            context.cgContext.setStrokeColor(UIColor.black.cgColor)
+            context.cgContext.strokePath()
         }
         
         imageView.image = image
