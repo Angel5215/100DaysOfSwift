@@ -70,6 +70,38 @@ Most of the code was created following the Hacking With Swift projects but it al
 
 **`MKMapView`, `MKAnnotation`, `MKPinAnnotationView`, `CLLocationCoordinate2D`**. Teach users about geography while you learn about MKMapView and annotations.
 
+### Project 17. Space Race
+
+**Per-pixel collision detection, advancing particle systems, linear and angular damping**. Dodge space debris while you learn about per-pixel collision detection.
+
+### Project 18. Debugging.
+
+**`print()`, `assert()`, breakpoints, and view debugging**. Everyone hits problems sooner or later, so learning to find and fix them is an important skill.
+
+### Project 19. JavaScript Injection.
+
+**Safari extensions, `UITextView`, `NotificationCenter`**. Extend Safari with a cool feature for JavaScript developers.
+
+### Project 20. Fireworks Night.
+
+**`Timer`, `follow(path:)`, sprite color blending, shake gestures**. Learn about timers and color blends while making things go bang!
+
+### Project 21. Local Notifications
+
+**`UNUserNotificationCenter`, `UNNotificationRequest`, `UNMutableNotificationContent`, `UNCalendarNotificationTrigger`, and `UNTimeIntervalNotificationTrigger`**. Send reminders, prompts and alerts even when your app isn't running.
+
+### Project 22. Detect-a-Beacon
+
+**`CLLocationManager`, `CLBeaconRegion`, `CLProximity`**. Learn to find and range iBeacons using our first project for a physical device.
+
+### Project 23. Swifty Ninja.
+
+**`SKShapeNode`, `AVAudioPlayer`, `UIBezierPath`, custom enums**. Learn to draw shapes in SpriteKit while making a fun and tense slicing game.
+
+### Project 24. Swift Strings.
+
+**`contains(where:)`, `NSAttributedString`**. Dive deep into the workings of Swift's strings.
+
 
 ## Details. Consolidation Days.
 
@@ -78,3 +110,5 @@ Most of the code was created following the Hacking With Swift projects but it al
 * [Consolidation app 03](https://www.hackingwithswift.com/guide/4/3/challenge)
 * [Consolidation app 04](https://www.hackingwithswift.com/guide/5/3/challenge)
 * [Consolidation app 05](https://www.hackingwithswift.com/guide/6/3/challenge)
+* [Consolidation app 06](https://www.hackingwithswift.com/guide/7/3/challenge). **Still not finished**.
+* [Consolidation app 07](https://www.hackingwithswift.com/guide/8/3/challenge)

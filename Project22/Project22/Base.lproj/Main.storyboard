@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project22" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57S-gx-TtD">
+                                <rect key="frame" x="79" y="325" width="256" height="256"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="256" id="5oZ-2A-pg6"/>
+                                    <constraint firstAttribute="width" constant="256" id="CZX-Rv-5OB"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNKNOWN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot7-VI-sb2">
+                                <rect key="frame" x="111" y="429" width="192" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No beacon detected" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ace-xk-hK0">
+                                <rect key="frame" x="20" y="497" width="374" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="9fA-Qn-t8P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ace-xk-hK0" secondAttribute="trailing" constant="20" symbolic="YES" id="31e-FW-oxK"/>
+                            <constraint firstItem="Ace-xk-hK0" firstAttribute="top" secondItem="Ot7-VI-sb2" secondAttribute="bottom" constant="20" id="3Yl-oo-P9v"/>
+                            <constraint firstItem="57S-gx-TtD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Mgz-EO-Ekf"/>
+                            <constraint firstItem="Ot7-VI-sb2" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="QUR-hz-LK1"/>
+                            <constraint firstItem="Ace-xk-hK0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="S86-eC-fyb"/>
+                            <constraint firstItem="Ot7-VI-sb2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dJs-Hz-z43"/>
+                            <constraint firstItem="57S-gx-TtD" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="n8D-2r-cIu"/>
+                            <constraint firstItem="Ace-xk-hK0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="npa-vT-mbp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="beaconLabel" destination="Ace-xk-hK0" id="kNM-g0-Tws"/>
+                        <outlet property="circle" destination="57S-gx-TtD" id="3Mf-Pz-WJo"/>
+                        <outlet property="distanceReading" destination="Ot7-VI-sb2" id="R72-HI-CTY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
